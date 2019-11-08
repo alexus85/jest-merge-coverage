@@ -8,6 +8,7 @@ const reporter = createReporter();
 /* [ Configuration ] */
 const rootDir = './coverage/libs';
 const reportOut = './coverage/report';
+const reportTypes = ['html', 'text'];
 
 const normalizeJestCoverage = ( obj ) => {
   const result = { ...obj };
@@ -51,7 +52,7 @@ async function main () {
   findAllCoverageReports( rootDir + '/**/coverage-final.json', ( reports, err ) => {
 	if ( Array.isArray( reports ) ) {
 	  mergeAllReports( coverageMap, reports );
-	  generateReport( coverageMap, [ 'text' ]  )
+	  generateReport( coverageMap, reportTypes  )
 	}
   });
 }
